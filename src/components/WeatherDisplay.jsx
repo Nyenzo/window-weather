@@ -4,23 +4,16 @@ function WeatherDisplay({ weatherData }) {
     
     
     const formatDateTime = () => {
-        if (!weatherData.timezone) return '';
-        
-        const utcSeconds = Math.floor(Date.now() / 1000);
-        
-        const citySeconds = utcSeconds + weatherData.timezone;
-        
-        const cityDate = new Date(citySeconds * 1000);
-        
-        const time = cityDate.toLocaleTimeString([], {
+        const now = new Date();
+        const time = now.toLocaleTimeString('en-GB', {
             hour: '2-digit',
-            minute: '2-digit',
+            minute: '2-digit'
         });
-        const date = cityDate.toLocaleDateString([], {
+        const date = now.toLocaleDateString('en-GB', {
             weekday: 'long',
             day: 'numeric',
-            month: 'long',
-            year: '2-digit',
+            month: 'short',
+            year: '2-digit'
         });
         return `${time} - ${date}`;
     };
