@@ -1,0 +1,259 @@
+/* SupplementaryWeather Component Styles */
+.supplementary-weather {
+  display: flex;
+  gap: 14px;
+  margin: 0 auto 19px auto;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.weather-module-container {
+  position: relative;
+}
+
+.weather-module {
+  background: var(--gradient-glass);
+  backdrop-filter: var(--blur-medium);
+  border-radius: 11px;
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 98px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-module.editing {
+  background: var(--glass-white-strong);
+  border-color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+.weather-module::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.weather-module:hover::before {
+  left: 100%;
+}
+
+.weather-module:hover:not(.editing) {
+  background: var(--glass-white);
+  border-color: var(--border-glass-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-strong);
+}
+
+.module-loading, .module-error {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin: 8px 0;
+  font-weight: 300;
+}
+
+.module-error {
+  color: var(--accent-red);
+}
+
+.edit-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.popup-content {
+  background: var(--gradient-glass);
+  backdrop-filter: var(--blur-medium);
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass-strong);
+  text-align: center;
+  min-width: 120px;
+}
+
+.popup-content h4 {
+  font-size: 11px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border-glass);
+  border-radius: 4px;
+  background: var(--glass-white-light);
+  color: var(--text-primary);
+  font-size: 10px;
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.edit-input:focus {
+  border-color: var(--accent-blue);
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.save-btn, .cancel-btn {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: var(--accent-green);
+  color: white;
+}
+
+.save-btn:hover {
+  background: rgba(34, 197, 94, 1);
+}
+
+.cancel-btn {
+  background: var(--accent-red);
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: rgba(239, 68, 68, 1);
+}
+
+.module-city {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.module-temp {
+  font-size: 17px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.module-condition {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.module-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.module-icon img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .supplementary-weather {
+    gap: 10px;
+    margin-bottom: 15px;
+    bottom: 100px;
+  }
+  
+  .weather-module {
+    padding: 10px;
+    min-width: 70px;
+  }
+  
+  .popup-content {
+    padding: 10px;
+    min-width: 100px;
+  }
+  
+  .module-city {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  
+  .module-temp {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+  
+  .module-condition {
+    font-size: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .module-icon img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .supplementary-weather {
+    gap: 8px;
+    margin-bottom: 12px;
+    bottom: 80px;
+  }
+  
+  .weather-module {
+    padding: 8px;
+    min-width: 60px;
+  }
+  
+  .popup-content {
+    padding: 8px;
+    min-width: 90px;
+  }
+  
+  .module-city {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+  
+  .module-temp {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  
+  .module-condition {
+    font-size: 7px;
+    margin-bottom: 5px;
+  }
+  
+  .module-icon img {
+    width: 20px;
+    height: 20px;
+  }
+}

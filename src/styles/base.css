@@ -1,0 +1,212 @@
+/* CSS Variables for Glassmorphism Theme */
+:root {
+  /* Primary Colors */
+  --glass-white: rgba(255, 255, 255, 0.25);
+  --glass-white-light: rgba(255, 255, 255, 0.1);
+  --glass-white-strong: rgba(255, 255, 255, 0.4);
+  
+  /* Text Colors */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Accent Colors */
+  --accent-blue: rgba(59, 130, 246, 0.6);
+  --accent-blue-hover: rgba(59, 130, 246, 0.8);
+  --accent-red: rgba(239, 68, 68, 0.8);
+  --accent-green: rgba(34, 197, 94, 0.8);
+  
+  /* Temperature Colors */
+  --temp-hot: rgba(239, 68, 68, 0.9);
+  --temp-warm: rgba(245, 158, 11, 0.9);
+  --temp-cool: rgba(59, 130, 246, 0.9);
+  --temp-cold: rgba(99, 102, 241, 0.9);
+  
+  /* Borders */
+  --border-glass: rgba(255, 255, 255, 0.2);
+  --border-glass-strong: rgba(255, 255, 255, 0.3);
+  
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glass-strong: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-text: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
+  /* Blur Effects */
+  --blur-light: blur(2px);
+  --blur-medium: blur(4px);
+  --blur-strong: blur(12px);
+  
+  /* Gradients */
+  --gradient-glass: linear-gradient(135deg, rgba(139, 177, 182, 0.3), rgba(255, 255, 255, 0.1));
+  --gradient-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+/* Main container with glassmorphism overlay */
+.weather-app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* Glassmorphism overlay */
+.weather-app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-overlay);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Left side - Main weather display */
+.main-weather {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 28px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 38px;
+  text-shadow: var(--shadow-text);
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Right sidebar with glassmorphism */
+.sidebar {
+  width: 294px;
+  min-width: 224px;
+  max-width: 100%;
+  background: var(--gradient-glass);
+  backdrop-filter: var(--blur-strong);
+  padding: 28px 21px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  border-left: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass-strong);
+  flex-shrink: 0;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--glass-white-light);
+  border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--glass-white);
+  border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--glass-white-strong);
+}
+
+/* Enhanced focus states for accessibility */
+.search-input:focus,
+.search-button:focus,
+.city-button:focus {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 266px;
+    padding: 22px 17px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 238px;
+    padding: 20px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-app {
+    flex-direction: column;
+  }
+  
+  .main-weather {
+    flex: none;
+    height: 65vh;
+    padding: 17px 14px;
+    justify-content: flex-end;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: 35vh;
+    padding: 14px;
+    border-left: none;
+    border-top: 1px solid var(--border-glass);
+    backdrop-filter: var(--blur-strong);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-weather {
+    padding: 14px 11px;
+    height: 70vh;
+    justify-content: flex-end;
+  }
+  
+  .sidebar {
+    height: 30vh;
+    padding: 11px;
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .app-title {
+    font-size: 17px;
+    margin-bottom: 11px;
+  }
+}
+
+/* Large screen improvements */
+@media (min-width: 1200px) {
+  .sidebar {
+    width: 308px;
+    padding: 34px 25px;
+  }
+}

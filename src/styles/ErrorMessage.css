@@ -1,0 +1,52 @@
+/* ErrorMessage Component Styles */
+
+.error {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  font-size: 17px;
+  color: var(--accent-red);
+  text-shadow: var(--shadow-text);
+  background: var(--gradient-glass);
+  backdrop-filter: var(--blur-medium);
+  padding: 17px 22px;
+  border-radius: 11px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glass);
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error {
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    padding: 14px 17px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error {
+    bottom: 11px;
+    left: 11px;
+    right: 11px;
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+}
