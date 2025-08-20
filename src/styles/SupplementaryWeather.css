@@ -6,6 +6,11 @@
   justify-content: center;
   position: relative;
   z-index: 3;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-blue) var(--glass-white-light);
+  padding-top: 70px; 
 }
 
 .weather-module-container {
@@ -187,6 +192,11 @@
     gap: 10px;
     margin-bottom: 15px;
     bottom: 100px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) var(--glass-white-light);
+    padding-top: 90px; 
   }
   
   .weather-module {
@@ -225,6 +235,9 @@
     gap: 8px;
     margin-bottom: 12px;
     bottom: 80px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-top: 110px; 
   }
   
   .weather-module {

@@ -4,12 +4,18 @@ function WeatherDisplay({ weatherData }) {
     
     
     const formatDateTime = () => {
+        if (!weatherData.timezone) return '';
+        // Get current UTC time in milliseconds
         const now = new Date();
-        const time = now.toLocaleTimeString('en-GB', {
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        // Add city timezone offset (in seconds)
+        const cityMs = utcMs + weatherData.timezone * 1000;
+        const cityDate = new Date(cityMs);
+        const time = cityDate.toLocaleTimeString('en-GB', {
             hour: '2-digit',
             minute: '2-digit'
         });
-        const date = now.toLocaleDateString('en-GB', {
+        const date = cityDate.toLocaleDateString('en-GB', {
             weekday: 'long',
             day: 'numeric',
             month: 'short',
